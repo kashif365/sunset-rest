@@ -1,0 +1,58 @@
+{
+  "_bootstrap.esm-CRsqbf74.js": {
+    "file": "assets/bootstrap.esm-CRsqbf74.js",
+    "name": "bootstrap.esm"
+  },
+  "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff": {
+    "file": "assets/bootstrap-icons-BeopsB42.woff",
+    "src": "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff"
+  },
+  "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff2": {
+    "file": "assets/bootstrap-icons-mSm7cUeB.woff2",
+    "src": "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff2"
+  },
+  "resources/js/admin.js": {
+    "file": "assets/admin-CvLalkoB.js",
+    "name": "admin",
+    "src": "resources/js/admin.js",
+    "isEntry": true,
+    "imports": [
+      "_bootstrap.esm-CRsqbf74.js"
+    ]
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-CkHJ8z4U.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true,
+    "imports": [
+      "_bootstrap.esm-CRsqbf74.js"
+    ]
+  },
+  "resources/scss/admin.scss": {
+    "file": "assets/admin-xIyagCKy.css",
+    "name": "admin",
+    "names": [
+      "admin.css"
+    ],
+    "src": "resources/scss/admin.scss",
+    "isEntry": true,
+    "assets": [
+      "assets/bootstrap-icons-mSm7cUeB.woff2",
+      "assets/bootstrap-icons-BeopsB42.woff"
+    ]
+  },
+  "resources/scss/app.scss": {
+    "file": "assets/app-BnXonsc7.css",
+    "name": "app",
+    "names": [
+      "app.css"
+    ],
+    "src": "resources/scss/app.scss",
+    "isEntry": true,
+    "assets": [
+      "assets/bootstrap-icons-mSm7cUeB.woff2",
+      "assets/bootstrap-icons-BeopsB42.woff"
+    ]
+  }
+}
