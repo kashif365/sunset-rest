@@ -150,7 +150,12 @@ $breadcrumb-divider: quote("›");
     color: $sbe-ink;
     font-weight: 700;
     text-align: center;
-    padding: .4rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.75rem;
+    line-height: 1.4;
+    padding: .5rem 1rem;
     font-size: .95rem;
 }
 
@@ -166,6 +171,7 @@ $breadcrumb-divider: quote("›");
         text-transform: uppercase;
         display: flex;
         align-items: center;
+        flex-shrink: 0;
         gap: .6rem;
 
         img { height: 44px; width: auto; }
@@ -178,7 +184,10 @@ $breadcrumb-divider: quote("›");
         text-transform: uppercase;
         letter-spacing: .06em;
         font-size: .95rem;
-        padding: .6rem .9rem;
+        white-space: nowrap;
+        padding: .6rem .75rem;
+
+        @include media-breakpoint-up(xxl) { padding-inline: .9rem; }
     }
 
     .nav-icon-btn {
@@ -191,9 +200,24 @@ $breadcrumb-divider: quote("›");
         align-items: center;
         min-height: 44px;
         min-width: 44px;
+        flex-shrink: 0;
         justify-content: center;
 
         &:hover, &:focus { color: $sbe-yellow; }
+    }
+
+    // Desktop-only pill CTA, shown next to the phone/cart icons from `xl`
+    // up. `white-space: nowrap` + `flex-shrink: 0` stop it from being
+    // squeezed into a two-line, near-circular blob by sibling flex items.
+    .btn-header-cta {
+        height: 46px;
+        padding: 0 1.6rem;
+        line-height: 1;
+        white-space: nowrap;
+        flex-shrink: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
     }
 
     // Mobile nav drawer: slides in from the right below the `lg` breakpoint
@@ -395,9 +419,10 @@ $breadcrumb-divider: quote("›");
     }
 
     .category-card-img {
-        aspect-ratio: 4 / 3;
+        aspect-ratio: 1;
         object-fit: cover;
         width: 100%;
+        background: $sbe-cream;
     }
 
     .category-card-body {
@@ -410,6 +435,13 @@ $breadcrumb-divider: quote("›");
         font-weight: 700;
         text-transform: uppercase;
         letter-spacing: .04em;
+
+        span:first-child {
+            min-width: 0;
+            white-space: normal;
+        }
+
+        i { flex-shrink: 0; }
     }
 }
 

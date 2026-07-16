@@ -104,7 +104,7 @@
                 </div>
                 <div class="row g-3 g-lg-4">
                     @foreach($featuredCategories as $category)
-                        <div class="col-6 col-md-4 col-lg-2">
+                        <div class="col-6 col-md-4 col-lg-4">
                             <a class="category-card" href="{{ route('menu.category', $category) }}">
                                 <img class="category-card-img" src="{{ \App\Services\ImageService::thumbUrl($category->image) }}"
                                      alt="{{ $category->image_alt ?: $category->name }}" loading="lazy" width="480" height="360">
