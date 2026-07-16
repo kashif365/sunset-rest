@@ -1,0 +1,649 @@
+// ============================================================
+// Sunset Bagel Exchange — public theme
+// Brand system derived from the printed menu:
+// burgundy, red, cream, orange-gold, yellow.
+// ============================================================
+
+// ---- Brand palette -----------------------------------------
+$sbe-burgundy:  #69001F;
+$sbe-red:       #B51F2A;
+$sbe-cream:     #FFF5D8;
+$sbe-orange:    #F8A51B;
+$sbe-yellow:    #FFD21F;
+$sbe-ink:       #201713;
+$sbe-white:     #FFFDF7;
+$sbe-muted:     #6D5B52;
+$sbe-border:    #E6D2A9;
+$sbe-green:     #4F7C44;
+
+// ---- Bootstrap overrides -----------------------------------
+$primary:       $sbe-burgundy;
+$secondary:     $sbe-red;
+$success:       $sbe-green;
+$warning:       $sbe-orange;
+$info:          $sbe-yellow;
+$light:         $sbe-cream;
+$dark:          $sbe-ink;
+
+$body-bg:                   $sbe-cream;
+$body-color:                $sbe-ink;
+$body-secondary-color:      $sbe-muted;
+$border-color:              $sbe-border;
+$link-color:                $sbe-red;
+$link-hover-color:          $sbe-burgundy;
+
+$font-family-sans-serif:    'Roboto Condensed', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+$headings-font-family:      'Roboto Condensed', system-ui, sans-serif;
+$headings-font-weight:      700;
+$font-size-base:            1.0625rem;
+$line-height-base:          1.55;
+
+$border-radius:             .75rem;
+$border-radius-sm:          .5rem;
+$border-radius-lg:          1.25rem;
+$border-radius-xl:          1.75rem;
+$border-radius-pill:        50rem;
+
+$btn-border-radius:         $border-radius-pill;
+$btn-border-radius-sm:      $border-radius-pill;
+$btn-border-radius-lg:      $border-radius-pill;
+$btn-padding-x:             1.4rem;
+$btn-padding-y:             .55rem;
+$btn-font-weight:           700;
+$btn-focus-width:           .2rem;
+
+$input-border-color:        $sbe-border;
+$input-focus-border-color:  $sbe-orange;
+$input-focus-box-shadow:    0 0 0 .2rem rgba($sbe-orange, .35);
+$input-bg:                  $sbe-white;
+$input-padding-y:           .55rem;
+
+$card-border-color:         $sbe-border;
+$card-border-radius:        $border-radius-lg;
+$card-bg:                   $sbe-white;
+
+$badge-font-weight:         700;
+$focus-ring-color:          rgba($sbe-orange, .45);
+$focus-ring-width:          .2rem;
+
+$navbar-dark-color:               rgba(#fff, .85);
+$navbar-dark-hover-color:         $sbe-yellow;
+$navbar-dark-active-color:        $sbe-yellow;
+
+$accordion-button-active-bg:      rgba($sbe-orange, .15);
+$accordion-button-active-color:   $sbe-burgundy;
+
+$breadcrumb-divider: quote("›");
+
+@import 'bootstrap/scss/bootstrap';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+
+// ---- Typography --------------------------------------------
+.font-display,
+.display-heading {
+    font-family: 'Anton', 'Roboto Condensed', sans-serif;
+    font-weight: 400;
+    letter-spacing: .03em;
+    text-transform: uppercase;
+    line-height: 1.08;
+}
+
+.section-heading {
+    font-family: 'Anton', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    color: $sbe-burgundy;
+
+    &.on-dark { color: $sbe-white; }
+}
+
+.eyebrow {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .18em;
+    font-size: .8rem;
+    color: $sbe-red;
+}
+
+// ---- Accessibility -----------------------------------------
+:focus-visible {
+    outline: 3px solid $sbe-orange !important;
+    outline-offset: 2px;
+}
+
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 2000;
+    padding: .75rem 1.25rem;
+    background: $sbe-yellow;
+    color: $sbe-ink;
+    font-weight: 700;
+    border-radius: 0 0 .5rem 0;
+
+    &:focus {
+        left: 0;
+    }
+}
+
+.btn { min-height: 44px; } // touch target
+.btn-sm { min-height: 38px; }
+
+// ---- Buttons ------------------------------------------------
+.btn-brand {
+    @include button-variant($sbe-red, $sbe-red, #fff, darken($sbe-red, 8%), darken($sbe-red, 8%), #fff);
+    color: #fff;
+}
+
+.btn-gold {
+    @include button-variant($sbe-orange, $sbe-orange, $sbe-ink, darken($sbe-orange, 8%), darken($sbe-orange, 8%), $sbe-ink);
+}
+
+.btn-outline-cream {
+    @include button-outline-variant($sbe-white, $sbe-ink, $sbe-white, $sbe-white, $sbe-ink);
+}
+
+// ---- Announcement bar --------------------------------------
+.announcement-bar {
+    background: $sbe-yellow;
+    color: $sbe-ink;
+    font-weight: 700;
+    text-align: center;
+    padding: .4rem 1rem;
+    font-size: .95rem;
+}
+
+// ---- Navbar -------------------------------------------------
+.navbar-sbe {
+    background: $sbe-burgundy;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .25);
+
+    .navbar-brand {
+        font-family: 'Anton', sans-serif;
+        letter-spacing: .05em;
+        color: $sbe-white;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: .6rem;
+
+        img { height: 44px; width: auto; }
+
+        &:hover, &:focus { color: $sbe-yellow; }
+    }
+
+    .nav-link {
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: .06em;
+        font-size: .95rem;
+        padding: .6rem .9rem;
+    }
+
+    .nav-icon-btn {
+        color: $sbe-white;
+        font-size: 1.25rem;
+        padding: .4rem .6rem;
+        border-radius: 50rem;
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        min-width: 44px;
+        justify-content: center;
+
+        &:hover, &:focus { color: $sbe-yellow; }
+    }
+
+    .cart-count {
+        position: absolute;
+        top: 2px;
+        right: 0;
+        background: $sbe-orange;
+        color: $sbe-ink;
+        font-size: .7rem;
+        font-weight: 700;
+        border-radius: 50rem;
+        padding: .1rem .4rem;
+        min-width: 1.2rem;
+    }
+}
+
+// ---- Curved orange decorations (from printed menu) ---------
+.curve-divider {
+    display: block;
+    width: 100%;
+    height: 46px;
+}
+
+.swoosh-underline {
+    position: relative;
+    display: inline-block;
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -10px;
+        height: 8px;
+        border-radius: 50rem;
+        background: linear-gradient(90deg, $sbe-orange, $sbe-yellow);
+    }
+}
+
+.ribbon-heading {
+    display: inline-block;
+    background: $sbe-red;
+    color: #fff;
+    font-family: 'Anton', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    padding: .45rem 1.6rem;
+    border-radius: 50rem;
+}
+
+// ---- Hero slider -------------------------------------------
+.hero-slider {
+    position: relative;
+
+    .carousel-item {
+        min-height: 420px;
+        background-size: cover;
+        background-position: center;
+
+        @include media-breakpoint-up(lg) { min-height: 560px; }
+    }
+
+    .hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(90deg, rgba($sbe-ink, .78) 0%, rgba($sbe-burgundy, .55) 55%, rgba($sbe-ink, .15) 100%);
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+        min-height: 420px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: $sbe-white;
+        padding: 3rem 0;
+
+        @include media-breakpoint-up(lg) { min-height: 560px; }
+
+        h1, h2 {
+            font-family: 'Anton', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: .02em;
+            font-size: clamp(2rem, 6vw, 4rem);
+            text-shadow: 0 3px 12px rgba(0, 0, 0, .45);
+        }
+
+        .lead {
+            max-width: 34rem;
+            font-size: clamp(1.05rem, 2.5vw, 1.35rem);
+        }
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 3.5rem;
+        opacity: .9;
+
+        .carousel-control-icon-circle {
+            background: rgba($sbe-burgundy, .75);
+            border: 2px solid rgba(#fff, .6);
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    .carousel-indicators [data-bs-target] {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: $sbe-yellow;
+    }
+}
+
+// ---- Section blocks ----------------------------------------
+.section-burgundy { background: $sbe-burgundy; color: $sbe-white; }
+.section-red      { background: $sbe-red; color: $sbe-white; }
+.section-cream    { background: $sbe-cream; }
+.section-white    { background: $sbe-white; }
+.section-ink      { background: $sbe-ink; color: $sbe-white; }
+
+// ---- Category / product cards ------------------------------
+.category-card {
+    display: block;
+    text-decoration: none;
+    border-radius: $border-radius-lg;
+    overflow: hidden;
+    background: $sbe-white;
+    border: 1px solid $sbe-border;
+    transition: transform .18s ease, box-shadow .18s ease;
+    height: 100%;
+
+    &:hover, &:focus {
+        transform: translateY(-4px);
+        box-shadow: 0 .75rem 1.5rem rgba($sbe-burgundy, .18);
+    }
+
+    .category-card-img {
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+        width: 100%;
+    }
+
+    .category-card-body {
+        padding: .9rem 1.1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: .5rem;
+        color: $sbe-ink;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: .04em;
+    }
+}
+
+.product-card {
+    border: 1px solid $sbe-border;
+    border-radius: $border-radius-lg;
+    background: $sbe-white;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: transform .18s ease, box-shadow .18s ease;
+
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 .6rem 1.4rem rgba($sbe-burgundy, .15);
+    }
+
+    .product-img-wrap {
+        position: relative;
+        aspect-ratio: 4 / 3;
+        overflow: hidden;
+        background: lighten($sbe-cream, 3%);
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .badge-stack {
+            position: absolute;
+            top: .6rem;
+            left: .6rem;
+            display: flex;
+            flex-direction: column;
+            gap: .3rem;
+            align-items: flex-start;
+        }
+    }
+
+    .card-body { flex: 1 1 auto; }
+
+    .product-name {
+        font-weight: 700;
+        font-size: 1.08rem;
+        text-transform: uppercase;
+        letter-spacing: .02em;
+        margin-bottom: .25rem;
+
+        a {
+            color: $sbe-ink;
+            text-decoration: none;
+            &:hover, &:focus { color: $sbe-red; }
+        }
+    }
+
+    .product-desc {
+        color: $sbe-muted;
+        font-size: .92rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .price {
+        font-family: 'Anton', sans-serif;
+        font-size: 1.25rem;
+        color: $sbe-burgundy;
+        letter-spacing: .02em;
+
+        .price-old {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-size: .95rem;
+            color: $sbe-muted;
+            text-decoration: line-through;
+            font-weight: 400;
+            margin-right: .35rem;
+        }
+    }
+}
+
+// ---- Badges -------------------------------------------------
+.badge-featured   { background: $sbe-yellow; color: $sbe-ink; }
+.badge-bestseller { background: $sbe-orange; color: $sbe-ink; }
+.badge-soldout    { background: $sbe-ink; color: #fff; }
+.badge-diet       { background: rgba($sbe-green, .14); color: $sbe-green; border: 1px solid rgba($sbe-green, .4); }
+.badge-allergen   { background: rgba($sbe-red, .1); color: $sbe-red; border: 1px solid rgba($sbe-red, .35); }
+.badge-verify     { background: $sbe-yellow; color: $sbe-ink; border: 1px dashed $sbe-ink; }
+
+// ---- Sticky category nav (menu page) -----------------------
+.menu-category-nav {
+    position: sticky;
+    top: 64px;
+    z-index: 1010;
+    background: $sbe-white;
+    border-bottom: 2px solid $sbe-border;
+    box-shadow: 0 4px 10px rgba($sbe-ink, .06);
+
+    .nav-scroller {
+        display: flex;
+        gap: .4rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding: .55rem .25rem;
+        scrollbar-width: thin;
+    }
+
+    .cat-pill {
+        white-space: nowrap;
+        border-radius: 50rem;
+        border: 1px solid $sbe-border;
+        background: $sbe-white;
+        color: $sbe-ink;
+        font-weight: 700;
+        padding: .45rem 1rem;
+        font-size: .9rem;
+        text-decoration: none;
+        min-height: 40px;
+        display: inline-flex;
+        align-items: center;
+
+        &:hover, &:focus { background: $sbe-cream; border-color: $sbe-orange; }
+        &.active { background: $sbe-burgundy; color: #fff; border-color: $sbe-burgundy; }
+    }
+}
+
+// ---- Menu section anchors clear the sticky navs -------------
+.menu-anchor { scroll-margin-top: 140px; }
+
+// ---- Why choose us ------------------------------------------
+.why-tile {
+    text-align: center;
+    padding: 1.75rem 1.25rem;
+    border-radius: $border-radius-lg;
+    background: rgba(#fff, .08);
+    height: 100%;
+
+    .why-icon {
+        width: 72px;
+        height: 72px;
+        border-radius: 50%;
+        background: $sbe-orange;
+        color: $sbe-ink;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+}
+
+// ---- Footer -------------------------------------------------
+.footer-sbe {
+    background: $sbe-burgundy;
+    color: rgba(#fff, .85);
+
+    a {
+        color: rgba(#fff, .85);
+        text-decoration: none;
+        &:hover, &:focus { color: $sbe-yellow; text-decoration: underline; }
+    }
+
+    .footer-heading {
+        font-family: 'Anton', sans-serif;
+        text-transform: uppercase;
+        letter-spacing: .06em;
+        color: $sbe-white;
+        font-size: 1.05rem;
+        margin-bottom: 1rem;
+    }
+
+    .social-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: rgba(#fff, .12);
+        color: #fff;
+        font-size: 1.2rem;
+
+        &:hover, &:focus { background: $sbe-orange; color: $sbe-ink; }
+    }
+
+    .footer-bottom {
+        border-top: 1px solid rgba(#fff, .15);
+        font-size: .9rem;
+    }
+}
+
+// ---- Cart / checkout ----------------------------------------
+.qty-control {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid $sbe-border;
+    border-radius: 50rem;
+    overflow: hidden;
+    background: $sbe-white;
+
+    button {
+        border: 0;
+        background: transparent;
+        width: 42px;
+        height: 42px;
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: $sbe-burgundy;
+
+        &:hover { background: $sbe-cream; }
+    }
+
+    input {
+        width: 3rem;
+        border: 0;
+        text-align: center;
+        font-weight: 700;
+        -moz-appearance: textfield;
+        &::-webkit-outer-spin-button, &::-webkit-inner-spin-button { -webkit-appearance: none; }
+    }
+}
+
+.summary-card {
+    border: 1px solid $sbe-border;
+    border-radius: $border-radius-lg;
+    background: $sbe-white;
+
+    .summary-row {
+        display: flex;
+        justify-content: space-between;
+        padding: .3rem 0;
+    }
+
+    .summary-total {
+        font-family: 'Anton', sans-serif;
+        font-size: 1.4rem;
+        color: $sbe-burgundy;
+    }
+}
+
+// ---- Modifier groups ----------------------------------------
+.modifier-group {
+    border: 1px solid $sbe-border;
+    border-radius: $border-radius;
+    background: $sbe-white;
+
+    .modifier-group-header {
+        background: $sbe-cream;
+        padding: .7rem 1rem;
+        font-weight: 700;
+        border-bottom: 1px solid $sbe-border;
+        display: flex;
+        justify-content: space-between;
+        border-radius: $border-radius $border-radius 0 0;
+    }
+
+    .form-check { padding-top: .35rem; padding-bottom: .35rem; }
+}
+
+// ---- Hours table --------------------------------------------
+.hours-table {
+    td, th { padding: .45rem .75rem; border-bottom: 1px dashed $sbe-border; }
+    .today { background: rgba($sbe-yellow, .25); font-weight: 700; }
+}
+
+// ---- Gallery -------------------------------------------------
+.gallery-grid img {
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    width: 100%;
+    border-radius: $border-radius;
+    transition: transform .18s ease;
+
+    &:hover { transform: scale(1.03); }
+}
+
+// ---- Utility -------------------------------------------------
+.text-burgundy { color: $sbe-burgundy !important; }
+.text-gold     { color: $sbe-orange !important; }
+.text-yellow   { color: $sbe-yellow !important; }
+.bg-cream      { background: $sbe-cream !important; }
+.bg-burgundy   { background: $sbe-burgundy !important; }
+
+.object-cover  { object-fit: cover; }
+
+img { max-width: 100%; }
+
+// Printable receipt
+@media print {
+    .no-print { display: none !important; }
+    body { background: #fff; }
+    .receipt-card { border: 0 !important; box-shadow: none !important; }
+}
