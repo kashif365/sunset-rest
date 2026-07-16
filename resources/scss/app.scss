@@ -196,6 +196,40 @@ $breadcrumb-divider: quote("›");
         &:hover, &:focus { color: $sbe-yellow; }
     }
 
+    // Mobile nav drawer: slides in from the right below the `lg` breakpoint
+    // (Bootstrap's built-in .navbar-expand-lg + .offcanvas pairing reverts
+    // this to a normal inline nav at lg and up automatically).
+    .navbar-sbe-offcanvas {
+        --bs-offcanvas-bg: #{$sbe-burgundy};
+        --bs-offcanvas-color: #{$sbe-white};
+        --bs-offcanvas-width: 300px;
+        border-left: 3px solid $sbe-orange;
+
+        .offcanvas-header {
+            border-bottom: 1px solid rgba(#fff, .15);
+        }
+
+        .offcanvas-title {
+            font-family: 'Anton', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: .04em;
+            color: $sbe-yellow;
+        }
+
+        .navbar-nav {
+            width: 100%;
+
+            .nav-link {
+                padding: .85rem .25rem;
+                border-bottom: 1px solid rgba(#fff, .1);
+            }
+        }
+
+        .btn-gold {
+            margin-top: 1rem;
+        }
+    }
+
     .cart-count {
         position: absolute;
         top: 2px;
@@ -286,12 +320,36 @@ $breadcrumb-divider: quote("›");
             max-width: 34rem;
             font-size: clamp(1.05rem, 2.5vw, 1.35rem);
         }
+
+        // Mobile: full-width stacked buttons at a comfortable touch size;
+        // back to inline pills from sm up.
+        .hero-cta-group {
+            @include media-breakpoint-down(sm) {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn {
+                @include media-breakpoint-down(sm) {
+                    width: 100%;
+                    font-size: 1rem;
+                    padding: .65rem 1rem;
+                }
+            }
+        }
     }
 
+    // Mobile: only the dots are shown for slide navigation — the prev/next
+    // arrow controls are hidden to keep the hero uncluttered on small screens.
     .carousel-control-prev,
     .carousel-control-next {
         width: 3.5rem;
         opacity: .9;
+        display: none;
+
+        @include media-breakpoint-up(md) {
+            display: flex;
+        }
 
         .carousel-control-icon-circle {
             background: rgba($sbe-burgundy, .75);

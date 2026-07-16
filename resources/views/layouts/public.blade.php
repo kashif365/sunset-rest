@@ -67,32 +67,38 @@
                     <span class="cart-count" aria-hidden="true">{{ $cartCount }}</span>
                 @endif
             </a>
-            <button class="navbar-toggler ms-1" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
-                    aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler ms-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#mainNav"
+                    aria-controls="mainNav" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
         </div>
 
-        <div class="collapse navbar-collapse order-lg-2" id="mainNav">
-            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                @forelse($headerLinks as $link)
-                    <li class="nav-item">
-                        <a class="nav-link {{ url()->current() === url($link->url) ? 'active' : '' }}"
-                           href="{{ url($link->url) }}" @if($link->new_tab) target="_blank" rel="noopener" @endif>
-                            {{ $link->label }}
-                        </a>
-                    </li>
-                @empty
-                    <li class="nav-item"><a class="nav-link" href="{{ route('menu.index') }}">Menu</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('menu.index') }}">Order Online</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('catering') }}">Catering</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('about') }}">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Contact</a></li>
-                @endforelse
-            </ul>
-            <a href="{{ route('menu.index') }}" class="btn btn-gold d-lg-inline-flex d-none align-items-center">
-                Order Online
-            </a>
+        <div class="offcanvas offcanvas-end navbar-sbe-offcanvas order-lg-2" tabindex="-1" id="mainNav" aria-labelledby="mainNavLabel">
+            <div class="offcanvas-header">
+                <h2 class="offcanvas-title" id="mainNavLabel">Menu</h2>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" data-bs-target="#mainNav" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    @forelse($headerLinks as $link)
+                        <li class="nav-item">
+                            <a class="nav-link {{ url()->current() === url($link->url) ? 'active' : '' }}"
+                               href="{{ url($link->url) }}" @if($link->new_tab) target="_blank" rel="noopener" @endif>
+                                {{ $link->label }}
+                            </a>
+                        </li>
+                    @empty
+                        <li class="nav-item"><a class="nav-link" href="{{ route('menu.index') }}">Menu</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('menu.index') }}">Order Online</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('catering') }}">Catering</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('about') }}">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Contact</a></li>
+                    @endforelse
+                </ul>
+                <a href="{{ route('menu.index') }}" class="btn btn-gold d-flex d-lg-inline-flex align-items-center justify-content-center">
+                    Order Online
+                </a>
+            </div>
         </div>
     </div>
 </nav>

@@ -39,7 +39,7 @@
                                 @if($slide->subtitle)
                                     <p class="lead">{{ $slide->subtitle }}</p>
                                 @endif
-                                <div class="d-flex flex-wrap gap-2 mt-2">
+                                <div class="d-flex flex-wrap gap-2 mt-2 hero-cta-group">
                                     @if($slide->button_text && $slide->button_url)
                                         <a href="{{ url($slide->button_url) }}" class="btn btn-gold btn-lg">{{ $slide->button_text }}</a>
                                     @endif
