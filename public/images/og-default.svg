@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <rect width="1200" height="630" fill="#69001F"/>
+  <circle cx="600" cy="280" r="140" fill="none" stroke="#FFF5D8" stroke-width="30"/>
+  <path d="M300 470 A300 300 0 0 1 900 470" fill="none" stroke="#F8A51B" stroke-width="14" stroke-linecap="round"/>
+  <text x="600" y="560" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="46" fill="#FFD21F" letter-spacing="2">SUNSET BAGEL EXCHANGE</text>
+</svg>

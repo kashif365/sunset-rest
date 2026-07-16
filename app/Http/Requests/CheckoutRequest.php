@@ -32,17 +32,20 @@ class CheckoutRequest extends FormRequest
     public function withValidator(Validator $validator): void
     {
         $validator->after(function (Validator $validator) {
-            if ($validator->errors()->isNotEmpty()) {
-                return;
-            }
-
-            $slots = app(PickupSlotService::class);
             $payments = app(PaymentManager::class);
 
             if (! $payments->isValid($this->input('payment_method'))) {
                 $validator->errors()->add('payment_method', 'Please choose a valid payment option.');
             }
 
+            // The date/time slot checks depend on pickup_date and pickup_time
+            // already being well-formed — skip them if those fields failed
+            // their own format rules, so we don't feed garbage into Carbon.
+            if ($validator->errors()->has('pickup_date') || $validator->errors()->has('pickup_time')) {
+                return;
+            }
+
+            $slots = app(PickupSlotService::class);
             $date = Carbon::createFromFormat('Y-m-d', $this->input('pickup_date'));
 
             if (! in_array($this->input('pickup_date'), $slots->orderableDates(), true)) {

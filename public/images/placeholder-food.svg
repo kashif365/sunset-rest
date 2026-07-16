@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 360" width="480" height="360" role="img" aria-label="Photo coming soon">
+  <rect width="480" height="360" fill="#FFF5D8"/>
+  <rect width="480" height="360" fill="none" stroke="#E6D2A9" stroke-width="4"/>
+  <circle cx="240" cy="160" r="70" fill="none" stroke="#F8A51B" stroke-width="16"/>
+  <circle cx="240" cy="160" r="70" fill="none" stroke="#B51F2A" stroke-width="2"/>
+  <text x="240" y="270" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="20" fill="#69001F">SUNSET BAGEL EXCHANGE</text>
+  <text x="240" y="296" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" fill="#6D5B52">Photo coming soon</text>
+</svg>

@@ -63,12 +63,14 @@ class AppServiceProvider extends ServiceProvider
 
     private function composeViews(): void
     {
-        // Shared data for every public page: settings, navigation, cart badge.
-        View::composer('layouts.public', function ($view) {
-            $settings = app(SettingsService::class);
+        // Shared globally (not just composed on the layout) because child views
+        // reference $siteSettings inside @section(...) blocks, which execute in
+        // the child's own scope before the parent layout — and thus before any
+        // layout-scoped composer — ever runs.
+        View::share('siteSettings', app(SettingsService::class));
 
+        View::composer('layouts.public', function ($view) {
             $view->with([
-                'siteSettings' => $settings,
                 'cartCount' => app(CartService::class)->count(),
                 'headerLinks' => \App\Models\NavigationLink::location('header')->get(),
                 'footerLinks' => \App\Models\NavigationLink::location('footer')->get(),

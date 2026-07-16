@@ -3,8 +3,11 @@
 @section('seo_title'){{ $category->seo_title ?: $category->name.' — Sunset Bagel Exchange Menu' }}@endsection
 @section('meta_description'){{ $category->meta_description ?: ($category->description ?: 'Explore '.$category->name.' at Sunset Bagel Exchange in Ocean, NJ. Order online for pickup.') }}@endsection
 
+@php
+    $breadcrumbTrail = ['Home' => route('home'), 'Menu' => route('menu.index'), $category->name => route('menu.category', $category)];
+@endphp
 @push('structured-data')
-    <script type="application/ld+json">@json(app(\App\Support\StructuredData::class)->breadcrumbs(['Home' => route('home'), 'Menu' => route('menu.index'), $category->name => route('menu.category', $category)]), JSON_UNESCAPED_SLASHES)</script>
+    <script type="application/ld+json">@json(app(\App\Support\StructuredData::class)->breadcrumbs($breadcrumbTrail), JSON_UNESCAPED_SLASHES)</script>
 @endpush
 
 @section('content')

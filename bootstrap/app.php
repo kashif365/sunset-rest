@@ -15,6 +15,11 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'admin.role' => \App\Http\Middleware\EnsureAdminRole::class,
         ]);
+
+        // The whole site is a back-office/public split with no customer-facing
+        // auth, so unauthenticated access to a protected route always means
+        // "go to the admin login", not a nonexistent top-level "login" route.
+        $middleware->redirectGuestsTo(fn () => route('admin.login'));
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 360" width="480" height="360">
+  <rect width="480" height="360" fill="#FFF5D8"/>
+  <circle cx="240" cy="160" r="90" fill="#69001F"/>
+  <text x="240" y="185" text-anchor="middle" font-size="80">🥣</text>
+</svg>

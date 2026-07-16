@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="Sunset Bagel Exchange logo">
+  <circle cx="60" cy="60" r="58" fill="#69001F"/>
+  <circle cx="60" cy="60" r="58" fill="none" stroke="#FFD21F" stroke-width="3"/>
+  <path d="M20 66 A40 40 0 0 1 100 66" fill="none" stroke="#F8A51B" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="60" cy="52" r="26" fill="none" stroke="#FFF5D8" stroke-width="9"/>
+  <circle cx="60" cy="52" r="26" fill="none" stroke="#F8A51B" stroke-width="2"/>
+  <text x="60" y="98" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="13" fill="#FFD21F" letter-spacing="1">SUNSET</text>
+</svg>

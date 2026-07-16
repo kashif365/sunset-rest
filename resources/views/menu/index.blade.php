@@ -3,8 +3,11 @@
 @section('seo_title')Full Menu — Sunset Bagel Exchange | Ocean, NJ@endsection
 @section('meta_description')Browse our full menu: hand rolled bagels, breakfast sandwiches, omelettes, lunch classics, salads, burritos and fresh bakery. Order online for pickup.@endsection
 
+@php
+    $breadcrumbTrail = ['Home' => route('home'), 'Menu' => route('menu.index')];
+@endphp
 @push('structured-data')
-    <script type="application/ld+json">@json(app(\App\Support\StructuredData::class)->breadcrumbs(['Home' => route('home'), 'Menu' => route('menu.index')]), JSON_UNESCAPED_SLASHES)</script>
+    <script type="application/ld+json">@json(app(\App\Support\StructuredData::class)->breadcrumbs($breadcrumbTrail), JSON_UNESCAPED_SLASHES)</script>
 @endpush
 
 @section('content')

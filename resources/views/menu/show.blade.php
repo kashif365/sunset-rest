@@ -5,9 +5,17 @@
 @section('og_type', 'product')
 @section('og_image'){{ \App\Services\ImageService::url($menuItem->image, '/images/og-default.svg') }}@endsection
 
+@php
+    $breadcrumbTrail = [
+        'Home' => route('home'),
+        'Menu' => route('menu.index'),
+        $menuItem->category->name => route('menu.category', $menuItem->category),
+        $menuItem->name => route('menu.item', $menuItem),
+    ];
+@endphp
 @push('structured-data')
     <script type="application/ld+json">@json(app(\App\Support\StructuredData::class)->menuItem($menuItem), JSON_UNESCAPED_SLASHES)</script>
-    <script type="application/ld+json">@json(app(\App\Support\StructuredData::class)->breadcrumbs(['Home' => route('home'), 'Menu' => route('menu.index'), $menuItem->category->name => route('menu.category', $menuItem->category), $menuItem->name => route('menu.item', $menuItem)]), JSON_UNESCAPED_SLASHES)</script>
+    <script type="application/ld+json">@json(app(\App\Support\StructuredData::class)->breadcrumbs($breadcrumbTrail), JSON_UNESCAPED_SLASHES)</script>
 @endpush
 
 @section('content')

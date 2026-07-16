@@ -1,8 +1,5 @@
 @extends('layouts.public')
 
-{{-- $siteSettings is composed in layouts.public; this fallback prevents 500s during edge-cases (e.g. composer not loaded in some contexts). --}}
-@php($siteSettings = $siteSettings ?? app(\App\Services\SettingsService::class))
-
 @section('seo_title'){{ $siteSettings->get('seo_title', 'Sunset Bagel Exchange — Hand Rolled Bagels, Breakfast & Lunch in Ocean, NJ') }}@endsection
 
 

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
@@ -13,9 +14,10 @@
         $ogImage = trim($__env->yieldContent('og_image')) ?: \App\Services\ImageService::url($siteSettings->get('og_image_path'), '/images/og-default.svg');
     @endphp
 
-    <title>{{ $pageTitle }}</title>
-    <meta name="description" content="{{ $pageDescription }}">
-    <link rel="canonical" href="{{ $canonical }}">
+    {{-- $pageTitle should exist from the @php block above; provide fallback to avoid 500s in edge-cases. --}}
+    <title>{{ $pageTitle ?? $siteSettings->get('seo_title', 'Sunset Bagel Exchange — Hand Rolled Bagels') }}</title>
+<meta name="description" content="{{ $pageDescription ?? $siteSettings->get('seo_description', 'Hand rolled, kettle boiled, old fashioned bagels. Breakfast, lunch and coffee in Ocean Township, NJ.') }}">
+    <link rel="canonical" href="{{ $canonical ?? url()->current() }}">
 
     <meta property="og:site_name" content="{{ $businessName }}">
     <meta property="og:type" content="@yield('og_type', 'website')">

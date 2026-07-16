@@ -16,9 +16,12 @@ use Illuminate\Support\Str;
  */
 class CartService
 {
-    private const SESSION_KEY = 'sbe.cart';
+    // Laravel's session store treats dotted keys as nested paths (Arr::set),
+    // so 'sbe.cart' and 'sbe.cart.coupon' would collide — the coupon value
+    // would be written *inside* the cart lines array. Underscores avoid that.
+    private const SESSION_KEY = 'sbe_cart';
 
-    private const COUPON_KEY = 'sbe.cart.coupon';
+    private const COUPON_KEY = 'sbe_cart_coupon';
 
     public function __construct(private readonly SettingsService $settings) {}
 
