@@ -475,8 +475,11 @@ $breadcrumb-divider: quote("›");
         display: inline-flex;
         align-items: center;
 
-        &:hover, &:focus { background: $sbe-cream; border-color: $sbe-orange; }
+        // Bootstrap's global `a:hover` rule outranks a bare class on
+        // specificity, so color must be repeated here or it silently wins.
+        &:hover, &:focus { background: $sbe-cream; border-color: $sbe-orange; color: $sbe-ink; }
         &.active { background: $sbe-burgundy; color: #fff; border-color: $sbe-burgundy; }
+        &.active:hover, &.active:focus { color: #fff; }
     }
 }
 
