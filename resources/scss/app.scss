@@ -544,14 +544,56 @@ $breadcrumb-divider: quote("›");
 
     .nav-scroller {
         display: flex;
+        flex-wrap: nowrap;
         gap: .4rem;
+        max-width: 100%;
         overflow-x: auto;
+        overflow-y: hidden;
+        padding: .55rem .25rem .7rem;
+        scroll-behavior: smooth;
+        scroll-snap-type: x proximity;
+        overscroll-behavior-inline: contain;
         -webkit-overflow-scrolling: touch;
-        padding: .55rem .25rem;
+
+        // Firefox
         scrollbar-width: thin;
+        scrollbar-color: $sbe-burgundy $sbe-cream;
+
+        // Chrome, Edge and Safari — themed to match the brand instead of
+        // the default dark-gray OS scrollbar. Scoped to this scroller only.
+        &::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: $sbe-cream;
+            border: 1px solid $sbe-border;
+            border-radius: 50rem;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            min-width: 48px;
+            background: $sbe-burgundy;
+            border: 2px solid $sbe-cream;
+            border-radius: 50rem;
+
+            &:hover { background: $sbe-red; }
+            &:active { background: $sbe-orange; }
+        }
+
+        @include media-breakpoint-down(sm) {
+            gap: .3rem;
+            padding-bottom: .6rem;
+
+            &::-webkit-scrollbar {
+                height: 6px;
+            }
+        }
     }
 
     .cat-pill {
+        flex: 0 0 auto;
+        scroll-snap-align: start;
         white-space: nowrap;
         border-radius: 50rem;
         border: 1px solid $sbe-border;
